@@ -1,0 +1,102 @@
+/*共通*/
+
+body {
+  background-color: #fffdef;
+  width: 100%;
+  margin: 0;
+}
+
+#header {
+}
+
+div#topBar {
+  background-color: #545f69;
+  height: 54px;
+  width: 100%;
+}
+
+#logo {
+  margin: 0;
+  position: absolute;
+  top: 22px;
+  width: 152px;
+  height: 28px;
+}
+
+div#main img {
+  float: right;
+
+}
+
+/* CSSスプライト */
+
+ul#dropmenu{
+/*  border:1px solid #ffffff;*/
+  margin: 0;
+  background-color: #545f69;
+}
+
+li#top,li#making,li#nowmaking,li#works,li#nowworks,li#about,li#nowabout,li#contact,li#nowcontact,li#sitemap,li#nowsitemap {
+  border: 0;
+  padding: 0;
+  width:84px;
+  height: 54px;
+  list-style-type: none;
+  float: left;
+  /*text-indent: -9999px;*/
+}
+
+li#top a,li#making a,li#nowmaking a,li#works a,li#nowworks,li#about a,li#nowabout a,li#contact a,li#nowcontact,li#sitemap a,li#nowsitemap a {
+  display:block;
+  width:84px;
+  height:54%;
+}
+
+#dropmenu li ul{
+  list-style: none;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#dropmenu li ul li.dropM {
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  color: #ffffff;
+  text-indent:0;
+  -moz-transition: .2s;
+  -webkit-transition: .2s;
+  -o-transition: .2s;
+  -ms-transition: .2s;
+  transition: .2s;
+}
+
+#dropmenu li ul li.dropM a{
+  padding:5px 0 0 0;
+  background-color: #ffffff;
+  color:#000000;
+  text-align: left;
+  font-size: 17px;
+  font-weight: normal;
+  text-align:center;
+}
+
+#dropmenu li:hover ul li.dropM {
+  overflow: visible;
+  height: 54px;
+  color:#fffdef;
+  background-color:#545f69;
+}
+
+.clearfix{
+  width: 100%;
+}
+
+.clearfix:after{
+  content: "";
+  display: block;
+  clear: both;
+}

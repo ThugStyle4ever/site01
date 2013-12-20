@@ -1,0 +1,439 @@
+/*⇓⇓共通⇓⇓*/
+body {
+  background: #FFFDEF;
+  margin: 0 0;
+  margin-width: 0;
+  margin-height: 0;
+  width: 100%;
+}
+
+body div#topBar {
+  border: 0px solid #ff0000;
+  background-color: #545F69;
+  margin: 0;
+  width: 100%;
+  height: 54px;
+}
+
+body div#topNav {
+  top:21px;
+  width:84px;
+  height:30px;
+  position:absolute;
+}
+
+body div#logo {
+  position:absolute;
+  left:227px;
+  top:22px;
+  width:152px;
+  height:28px;
+}
+
+body div#sideMenu {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  left: 309px;
+}
+
+div pre a:link {
+    color: #545F69;
+}
+div pre a:visited {
+    color: #545F69;
+}
+div pre a:hover {
+    color: #73f9f3;
+}
+div pre a:active {
+    color: #ffffff;
+}
+
+div a:link {
+    color: #545F69;
+}
+div a:visited {
+    color: #545F69;
+}
+div a:hover {
+    color: #73f9f3;
+}
+div a:active {
+    color: #ffffff;
+}
+
+div#topImg {
+  position: absolute;
+  left: 515px;
+  top: 70px;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+/*⇑⇑共通⇑⇑*/
+
+/*⇓⇓indexhtml⇓⇓*/
+
+/*⇑⇑indexhtml⇑⇑*/
+
+/*⇓⇓Marriage⇓⇓*/
+
+body div#topsubMenu {
+  position: absolute;
+  left: 515px;
+  width: 113px;
+  height: 22px;
+}
+
+body div#topMes {
+  position: absolute;
+  left: 645px;
+  top: 450px;
+  width: 412px;
+  height: 17px;
+}
+
+div#tfooter {
+  clear: both;
+  position: absolute;
+  top: 600px;
+  left: 650px;
+  text-align: center;
+  font-size: 50%;
+}
+
+div#marriage h1 {
+  position: absolute;
+  top: 450px;
+  left: 735px;
+  text-align: center;
+  font-size: 80%;
+}
+
+div p#marriage {
+  position: absolute;
+  top: 500px;
+  left: 510px;
+  text-align: center;
+  font-size: 60%;
+}
+
+body div#mSubMenu {
+  position: absolute;
+  top: 415px;
+  width: 113px;
+  height: 22px;
+}
+
+div p#mRes {
+  position: absolute;
+  top: 710px;
+  left: 755px;
+  text-align: center;
+  font-size: 65%;
+}
+
+div#mfooter {
+  clear: both;
+  position: absolute;
+  top: 800px;
+  left: 670px;
+  text-align: center;
+  font-size: 50%;
+}
+
+/*⇑⇑Marriage⇑⇑*/
+
+/*⇓⇓Engage⇓⇓*/
+
+div#engage h1 {
+  position: absolute;
+  top: 450px;
+  left: 735px;
+  text-align: center;
+  font-size: 80%;
+}
+
+div#engage p {
+  position: absolute;
+  top: 730px;
+  left: 760px;
+  text-align: center;
+  font-size: 65%;
+}
+
+div#engage pre {
+  position: absolute;
+  top: 490px;
+  left: 590px;
+  text-align: center;
+  font-size: 95%;
+}
+
+div#efooter {
+  position: absolute;
+  top: 850px;
+  left: 685px;
+  text-align: center;
+  font-size: 50%;
+}
+
+/*⇑⇑Engage⇑⇑*/
+
+/*⇓⇓Pair⇓⇓*/
+
+div#pair h1 {
+  position: absolute;
+  top: 450px;
+  left: 755px;
+  text-align: center;
+  font-size: 80%;
+}
+
+div#pair p {
+  position: absolute;
+  top: 700px;
+  left: 760px;
+  text-align: center;
+  font-size: 65%;
+}
+
+div#pair pre {
+  position: absolute;
+  top: 490px;
+  left: 625px;
+  text-align: center;
+  font-size: 95%;
+}
+
+div#pairfooter {
+  position: absolute;
+  top: 880px;
+  left: 685px;
+  text-align: center;
+  font-size: 50%;
+}
+
+/*⇑⇑Pair⇑⇑*/
+
+/*⇓⇓about⇓⇓*/
+
+div#about h1 {
+  position: absolute;
+  top: 420px;
+  left: 730px;
+  text-align: center;
+  font-size: 80%;
+}
+
+div#about p {
+  position: absolute;
+  top: 850px;
+  left: 720px;
+  text-align: center;
+  font-size: 65%;
+}
+
+div#about pre {
+  position: absolute;
+  top: 480px;
+  left: 580px;
+  text-align: left;
+  font-size: 95%;
+}
+
+div#afooter {
+  clear: both;
+  position: absolute;
+  top: 980px;
+  left: 645px;
+  text-align: center;
+  font-size: 50%;
+}
+/*⇑⇑About⇑⇑*/
+
+/*⇓⇓Contact⇓⇓*/
+
+div#contact h1 {
+  position: absolute;
+  top: 420px;
+  left: 730px;
+  text-align: center;
+  font-size: 80%;
+}
+
+p#contact {
+  position: absolute;
+  top: 1100px;
+  left: 160px;
+  font-size: 65%;
+}
+
+div#contact pre {
+  position: absolute;
+  top: 480px;
+  left: 500px;
+  text-align: left;
+  font-size: 95%;
+}
+
+div#cfooter {
+  clear: both;
+  position: absolute;
+  top: 2200px;
+  left: 620px;
+  text-align: center;
+  font-size: 50%;
+}
+
+/*⇑⇑Contact⇑⇑*/
+
+/*⇓⇓Price⇓⇓*/
+
+div#price h1 {
+  position: absolute;
+  top: 450px;
+  left: 730px;
+  text-align: center;
+  font-size: 80%;
+}
+div#price p {
+  position: absolute;
+  top: 845px;
+  left: 720px;
+  text-align: center;
+  font-size: 65%;
+}
+
+div p#up {
+  position: absolute;
+  top: 2100px;
+  left: 705px;
+  text-align: center;
+  font-size: 65%;
+}
+
+div#price pre {
+  position: absolute;
+  top: 480px;
+  left: 500px;
+  text-align: left;
+  font-size: 95%;
+}
+
+div#pfooter {
+  clear: both;
+  position: absolute;
+  top: 2200px;
+  left: 620px;
+  text-align: center;
+  font-size: 50%;
+}
+
+span.course {
+  font-weight: bold;
+  color: #545F69;
+  font-size: 120%;
+}
+/*⇑⇑Price⇑⇑*/
+
+/*⇓⇓Making⇓⇓*/
+div#making h1 {
+  position: absolute;
+  top: 450px;
+  left: 740px;
+  text-align: center;
+  font-size: 80%;
+}
+div#making p {
+  position: absolute;
+  top: 1300px;
+  left: 720px;
+  text-align: center;
+  font-size: 65%;
+}
+
+div p#up {
+  position: absolute;
+  top: 2100px;
+  left: 705px;
+  text-align: center;
+  font-size: 65%;
+}
+
+div#making pre {
+  position: absolute;
+  top: 480px;
+  left: 500px;
+  text-align: center;
+  font-size: 95%;
+  line-height: 25px;
+}
+
+div#makingfooter {
+  clear: both;
+  position: absolute;
+  top: 1700px;
+  left: 645px;
+  text-align: center;
+  font-size: 50%;
+}
+
+/*⇑⇑Making⇑⇑*/
+
+/*⇓⇓gallery⇓⇓*/
+
+/*div td.fancybox {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}*/
+
+div.thumb p {
+  width: 200px;
+  height: 200px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  float: left;
+  padding: 0;
+  margin-top: 0;
+}
+
+div.thumb {
+  width: 1080px;
+  margin: 0 auto;
+}
+
+div.thumb p.grid01 {
+  margin-left: 0px;
+}
+
+h1#gallery {
+  font-size: 40px;
+  text-align: center;
+  color: #545F69;
+}
+
+div p#gfooter {
+  font-size: 13px;
+  color: #545F69;
+  text-align: center;
+}
+
+div p#gallery {
+  margin-bottom: 200px;
+  font-size: 15px;
+  color: #545F69;
+  text-align: center;
+}
+/*⇑⇑gallery⇑⇑*/
