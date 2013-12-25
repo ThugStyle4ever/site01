@@ -1,5 +1,11 @@
 <?php
+  exit('aaaa');
   require('dbconnect.php');
+
+  $sql = 'SELECT caption, og_img, thum_img FROM gallery';
+  $upload = mysql_query($sql) or die(mysql_error());
+
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -87,23 +93,22 @@
 
     <div class="thumb clearfix" >
       <?php
-        $num = count(10)
-        for ($i=0; $i < $num; $i++) {
+        $i=0;
+        while($up = mysql_fetch_assoc($upload)){
+        $caption = htmlspecialchars($up['caption'], ENT_QUOTES, 'UTF-8');
+        $og_img = htmlspecialchars($up['og_img'], ENT_QUOTES, 'UTF-8');
+        $thum_img = htmlspecialchars($up['thum_img'], ENT_QUOTES, 'UTF-8');
       ?>
+      <!-- <?=  ?> -->
           <p <?= ($i%5 == 0)? 'class="grid01"' : '' ; ?>>
-            <a class="fancybox" href="../images/gallery/er_2013_1219_181801.jpg" data-fancybox-group="gallery" title="Black Ring">
-            <img src="../images/gallery/er_thumb_2013_1219_181801.jpg" height="200" width="200" alt="image" /></a></p>
-          <p>
-            <a class="fancybox" href="../images/gallery/er_2013_1219_181803.jpg" data-fancybox-group="gallery" title="K18">
-            <img src="../images/gallery/er_thumb_2013_1219_181803.jpg" height="200" width="200" alt="image" /></a></p>
-          <p>
-            <a class="fancybox" href="../images/gallery/er_2013_1219_181804.jpg" data-fancybox-group="gallery" title=""><img src="../images/gallery/er_thumb_2013_1219_181804.jpg" height="200" width="200" alt="image" /></a></p>
-          <p>
-            <a class="fancybox" href="../images/gallery/er_2013_1219_181805.jpg" data-fancybox-group="gallery" title="K18 スモーキークォーツ"><img src="../images/gallery/er_thumb_2013_1219_181805.jpg" height="200" width="200" alt="image" /></a></p>
-          <p>
-            <a class="fancybox" href="../images/gallery/er_2013_1219_181806.jpg" data-fancybox-group="gallery" title=""><img src="../images/gallery/er_thumb_2013_1219_181806.jpg" height="200" width="200" alt="image" /></a></p>
+            <a class="fancybox" href="../images/gallery/<?= $og_img ?>" data-fancybox-group="gallery" title="<?= $caption ?>">
+            <img src="../images/gallery/<?= $thum_img ?>" height="200" width="200" alt="image" /></a></p>
+      <?php
+      $i++;
+      }
+      ?>
 
-          <p class="grid01">
+<!--           <p class="grid01">
             <a class="fancybox" href="../images/gallery/er_2013_1219_181807.jpg" data-fancybox-group="gallery" title="K18 スモーキークォーツ"><img src="../images/gallery/er_thumb_2013_1219_181807.jpg" height="200" width="200" alt="image" /></a></p>
           <p>
             <a class="fancybox" href="../images/gallery/er_2013_1219_181808.jpg" data-fancybox-group="gallery" title="K18 Diamond"><img src="../images/gallery/er_thumb_2013_1219_181808.jpg" height="200" width="200" alt="image" /></a></p>
@@ -114,10 +119,8 @@
           <p>
             <a class="fancybox" href="../images/gallery/mr_2013_1219_181802.jpg" data-fancybox-group="gallery" title="K18 Diamond"><img src="../images/gallery/mr_thumb_2013_1219_181802.jpg" height="200" width="200" alt="image" /></a></p>
 
-      <?php
-      }
-      ?>
 
+ -->
           <!-- <p class="grid01">
             <a class="fancybox" href="../images/gallery/ring12.jpg" data-fancybox-group="gallery" title="image1"><img src="../images/gallery/ring12_thumb.jpg" height="200" width="200" alt="image" /></a></p>
           <p>

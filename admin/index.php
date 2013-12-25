@@ -1,7 +1,39 @@
 <?php
   require('dbconnect.php');
+  session_start();
 
+  if(!empty($_POST)){
+    $cap = htmlspecialchars($_POST['caption'], ENT_QUOTES,'UTF8');
+    $item_name = htmlspecialchars($_POST['item_name'], ENT_QUOTES,'UTF8');
+    $og = $_FILES['og_img'];
+    $thum = $_FILES['thum_img'];
 
+    $ext_og = substr($og['name'],-4);
+    $ext_thum = substr($thum['name'],-4);
+
+    if ($ext_og == '.gif' || $ext_og == '.jpg' || $ext_og == '.png') {
+      $og_newFile = $item_name. '_'. date('Y_md_His'). $ext_og //EX）er_2013_1225_0945.jpg
+      $og_filePath = '../images/og_images/'. $og_newFile;
+      move_uploaded_file($og['tmp_name'], $og_filePath);
+    }else{
+      echo '＊拡張子が[.gif] [.jpg] [.png] のファイルのみアップロード可能';
+    }
+
+    if ($ext_thm == '.gif' || $ext_thum == '.jpg' || $ext_thum == '.png') {
+      $thum_newFile = $item_name. '_'. date('Y_md_His'). $ext_thum
+      $thum_filePath = '../images/thum_images/'. $thum_newFile;
+      move_uploaded_file($thum['tmp_name'], $thum_filePath);
+    }else{
+      echo '＊拡張子が[.gif] [.jpg] [.png] のファイルのみアップロード可能';
+    }
+
+    $_SESSION['gallery'] = $_POST;
+    $_SESSION['gallery']['og_img'] = $og_newFile;
+    $_SESSION['gallery']['thum_img'] = $thum_newFile;
+    header('Location: check.php');
+    exit();
+
+  }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -41,7 +73,7 @@
     <a href="../sitemap.html"><img src="../images/nav_06.gif" alt="sitemap" /></a>
   </div>
       <div id="upload">
-        <form class="grid-form">
+        <form class="grid-form" action="" method="post" enctype="multipart/form-data">
           <fieldset>
             <br /><br />
             <fieldset>
@@ -49,7 +81,7 @@
                 <legend>Caption</legend>
                 <div data-field-span="1">
                   <label>Input Caption</label>
-                  <textarea name="caption" id="caption" cols="35" rows="3" autofocus></textarea>
+                  <textarea name="caption" id="caption" cols="35" rows="3" autofocus ><?= $cap ?></textarea>
                 </div>
               </div>
             </fieldset>
@@ -61,10 +93,10 @@
                 <legend>Item Name</legend>
                 <div data-field-span="1">
                   <label>Select Type</label>
-                  <label for="mr"><input name="item_name" type="radio" id="mr" value="mr" />Marriage</label>
-                  <label for="er"><input name="item_name" type="radio" id="er" value="er" />Engage</label>
-                  <label for="pr"><input name="item_name" type="radio" id="pr" value="pr" />Pair</label>
-                  <label for="or"><input name="item_name" type="radio" id="or" value="or" />Order</label>
+                  <label for="mr"><input name="item_name" type="radio" id="mr" value="mr"<?= $_post['value'] ?> />Marriage</label>
+                  <label for="er"><input name="item_name" type="radio" id="er" value="er"<?= $_post['value'] ?> />Engage</label>
+                  <label for="pr"><input name="item_name" type="radio" id="pr" value="pr"<?= $_post['value'] ?> />Pair</label>
+                  <label for="or"><input name="item_name" type="radio" id="or" value="or"<?= $_post['value'] ?> />Order</label>
                 </div>
               </div>
             </fieldset>
@@ -76,13 +108,13 @@
                 <legend>Select Image</legend>
                 <div data-field-span="1">
                   <label>Select Original Image</label>
-                  <input name="upload" type="file" id="upload" />
+                  <input name="og_img" type="file" id="og_img" />
                 </div>
               </div>
               <div data-row-span="2">
                 <div data-field-span="1">
                   <label>Select thumbnail Image</label>
-                  <input name="upload" type="file" id="upload" />
+                  <input name="thum_img" type="file" id="thum_img" />
                 </div>
               </div>
               <div data-row-span="2">
@@ -98,11 +130,6 @@
         </form>
       </div>
       <br />
-  <div>
-      <p id="afooter">Copyright&nbsp;&copy;&nbsp;2013&nbsp;*s&amp;s+design*&nbsp;All&nbsp;Rights&nbsp;Reserved.<br />
-    :)</p>
-  </div>
-
   </div>
   </body>
 </html>

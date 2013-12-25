@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../css/style1.css" />
+  <title>Document</title>
+</head>
+<body>
+  <table>
+    <tr>
+      <td><label for="caption">キャプション</label></td>
+      <td><textarea name="caption" id="caption" placeholder="キャプション" cols="35" rows="3"></textarea></td>
+    </tr>
+    <tr>
+      <td><label for="item_name">アイテム名</label></td>
+      <td>
+        <input name="item_name" type="radio" id="mr" value="mr" />
+        <label for="mr">マリッジリング</label>
+        <input name="item_name" type="radio" id="er" value="er" />
+        <label for="er">エンゲージリング</label>
+        <input name="item_name" type="radio" id="pr" value="pr" />
+        <label for="pr">ペアリング</label>
+        <input name="item_name" type="radio" id="or" value="or" />
+        <label for="or">オーダーメイド</label>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="hoge">備考</label></td>
+      <td><input name="hoge" type="text" class="foo" data-new-placeholder="" placeholder="hoge" id="hoge" size="10" maxlength="10" /></td>
+    </tr>
+    <tr>
+      <td><label for="upload">画像を選択</label></td>
+      <td><input name="upload" type="file" id="upload" size="50" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="submit" value="UPLOAD" size="50" /></td>
+    </tr>
+  </table>
+</body>
+</html>
+

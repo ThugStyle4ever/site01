@@ -443,7 +443,8 @@ div p#gallery {
 div#upload {
   width: 800px;
   margin-left: 300px;
-  border: 1px solid #000;
+  margin-top: 20px;
+  border: 0px solid #000;
 }
 
 div p#upload {
@@ -461,4 +462,15 @@ div p#afooter {
 }
 /*⇑⇑admin-upload⇑⇑*/
 
+/*⇓⇓admin/table⇓⇓*/
+
+table tr td {
+  border: 1px solid #000;
+}
+
+/*⇑⇑admintable⇑⇑*/
+
+
+/*⇓⇓⇓⇓*/
+/*⇑⇑⇑⇑*/
 

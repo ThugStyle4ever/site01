@@ -1,8 +1,15 @@
 <?php
   require('dbconnect.php');
+  session_start();
+  if (!isset($_SESSION['gallery'])) {
+    header('Location: index.php');
+    exit();
+  }
+
 
 
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -10,7 +17,7 @@
   <link rel="stylesheet" type="text/css" href="../css/style1.css" />
   <link rel="stylesheet" type="text/css" href="../css/gridforms.css" />
   <script type="text/javascript" href="../js/gridforms.js"></script>
-  <title>管理ページ</title>
+  <title>確認画面</title>
   <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
   </head>
   <body>
@@ -41,68 +48,56 @@
     <a href="../sitemap.html"><img src="../images/nav_06.gif" alt="sitemap" /></a>
   </div>
       <div id="upload">
-        <form class="grid-form">
+        <form action="" method="post" class="grid-form">
           <fieldset>
             <br /><br />
             <fieldset>
               <div data-row-span="1">
                 <legend>Caption</legend>
                 <div data-field-span="1">
-                  <label>Input Caption</label>
-                  <textarea name="caption" id="caption" cols="35" rows="3" autofocus></textarea>
+                  <label><?= htmlspecialchars($_SESSION['gallery']['caption'],ENT_QUOTES, 'UTF-8'); ?>入力したキャプション</label>
                 </div>
               </div>
             </fieldset>
-
-            <br /><br />
-
+            <br />
             <fieldset>
               <div data-row-span="1">
-                <legend>Item Name</legend>
+                <legend>Original File Name</legend>
                 <div data-field-span="1">
-                  <label>Select Type</label>
-                  <label for="mr"><input name="item_name" type="radio" id="mr" value="mr" />Marriage</label>
-                  <label for="er"><input name="item_name" type="radio" id="er" value="er" />Engage</label>
-                  <label for="pr"><input name="item_name" type="radio" id="pr" value="pr" />Pair</label>
-                  <label for="or"><input name="item_name" type="radio" id="or" value="or" />Order</label>
+                  <label><?= $_SESSION['gallery'][''] ?>アップロードしたオリジナルファイル名</label>
+                </div>
+              </div>
+              <br />
+              <div data-row-span="1">
+                <legend>Thumbnail File Name</legend>
+                <div data-field-span="1">
+                  <label><?= $_SESSION['gallery'][''] ?>アップロードしたサムネイルファイル名</label>
                 </div>
               </div>
             </fieldset>
-
-            <br /><br />
-
+            <br />
             <fieldset>
               <div data-row-span="1">
-                <legend>Select Image</legend>
+                <legend>Uploaded OG Image</legend>
                 <div data-field-span="1">
-                  <label>Select Original Image</label>
-                  <input name="upload" type="file" id="upload" />
+                  <label><img src="../images/og_images/<?= $_SESSION['gallery']['og_img'] ?>" />アップロードしたオリジナル画像を表示</label>
                 </div>
               </div>
-              <div data-row-span="2">
+              <br />
+              <div data-row-span="1">
+                <legend>Uploaded Thumb Image</legend>
                 <div data-field-span="1">
-                  <label>Select thumbnail Image</label>
-                  <input name="upload" type="file" id="upload" />
-                </div>
-              </div>
-              <div data-row-span="2">
-                <div data-field-span="1">
-                  <label>&nbsp;</label>
-                </div>
-                <div data-field-span="1">
-                  <input type="submit" value="UPLOAD" />
+                  <label><img src="../images/thum_images/<?= $_SESSION['gallery']['thum_img'] ?>" />アップロードしたサムネイル画像を表示</label>
                 </div>
               </div>
             </fieldset>
+              <div data-field-span="1">
+                <input type="submit" value="DBに登録する" />
+              </div>
           </fieldset>
         </form>
       </div>
       <br />
-  <div>
-      <p id="afooter">Copyright&nbsp;&copy;&nbsp;2013&nbsp;*s&amp;s+design*&nbsp;All&nbsp;Rights&nbsp;Reserved.<br />
-    :)</p>
-  </div>
-
   </div>
   </body>
 </html>

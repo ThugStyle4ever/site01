@@ -437,3 +437,40 @@ div p#gallery {
   text-align: center;
 }
 /*⇑⇑gallery⇑⇑*/
+
+/*⇓⇓admin-upload⇓⇓*/
+
+div#upload {
+  width: 800px;
+  margin-left: 300px;
+  margin-bottom: 100px;
+  border: 0px solid #000;
+}
+
+div p#upload {
+  margin-top: 50px;
+  /*border: 1px solid #000;*/
+  border-left: solid #545F69 10px;
+  padding-left: 5px;
+}
+
+div p#afooter {
+  margin-left: 300px;
+  width: 800px;
+  font-size: 13px;
+  text-align: center;
+}
+/*⇑⇑admin-upload⇑⇑*/
+
+/*⇓⇓admin/table⇓⇓*/
+
+table tr td {
+  border: 0px solid #000;
+}
+
+/*⇑⇑admintable⇑⇑*/
+
+
+/*⇓⇓⇓⇓*/
+/*⇑⇑⇑⇑*/
+
