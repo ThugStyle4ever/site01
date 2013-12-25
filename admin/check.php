@@ -1,12 +1,16 @@
 <?php
   require('dbconnect.php');
   session_start();
+
   if (!isset($_SESSION['gallery'])) {
     header('Location: index.php');
     exit();
   }
 
-
+  //DB登録処理
+  if (!empty($_POST)) {
+    $sql = sprintf('INSERT INTO gallery SET caption=');
+  }
 
 ?>
 
@@ -64,14 +68,14 @@
               <div data-row-span="1">
                 <legend>Original File Name</legend>
                 <div data-field-span="1">
-                  <label><?= $_SESSION['gallery'][''] ?>アップロードしたオリジナルファイル名</label>
+                  <label><?= $_SESSION['gallery']['og_img'] ?>アップロードしたオリジナルファイル名</label>
                 </div>
               </div>
               <br />
               <div data-row-span="1">
                 <legend>Thumbnail File Name</legend>
                 <div data-field-span="1">
-                  <label><?= $_SESSION['gallery'][''] ?>アップロードしたサムネイルファイル名</label>
+                  <label><?= $_SESSION['gallery']['thum_img'] ?>アップロードしたサムネイルファイル名</label>
                 </div>
               </div>
             </fieldset>
