@@ -51,7 +51,7 @@
   <link rel="stylesheet" type="text/css" href="../css/style1.css" />
   <link rel="stylesheet" type="text/css" href="../css/gridforms.css" />
 
-  <title>管理ページ</title>
+  <title>DB変更</title>
   <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
   </head>
   <body>
@@ -89,7 +89,7 @@
                 <div data-row-span="1">
                   <legend>Caption</legend>
                   <div data-field-span="1">
-                    <label>Input Caption</label>
+                    <label>Input New Caption</label>
                     <textarea name="caption" id="caption" cols="35" rows="3" autofocus ><?= $cap ?></textarea>
                   </div>
                 </div>

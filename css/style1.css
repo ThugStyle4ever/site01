@@ -507,6 +507,36 @@ table tr td {
 
 /*⇑⇑confirm⇑⇑*/
 
+/*⇓⇓update⇓⇓*/
+
+div#update {
+  margin-left: 100px;
+  margin-top: 50px;
+  margin-bottom: 200px;
+}
+
+table {
+  width: 1260px;
+  margin-left: 50px;
+  font-size: 12px;
+}
+
+th,td {
+  border: 1px solid #000;
+  padding: 5px;
+}
+
+img {
+  padding-right: 20px;
+  margin-right: 20px;
+}
+
+a.id {
+  text-decoration: none;
+}
+
+
+/*⇑⇑update⇑⇑*/
+
 /*⇓⇓⇓⇓*/
 /*⇑⇑⇑⇑*/
-

@@ -1,7 +1,7 @@
 <?php
   require('dbconnect.php');
 
-  $sql = 'SELECT caption, og_img, thum_img FROM gallery';
+  $sql = 'SELECT caption, og_img, thum_img FROM gallery ORDER BY upload_date DESC';
   $upload = mysql_query($sql) or die(mysql_error());
 
 ?>
