@@ -14,15 +14,15 @@
 
     if ($ext_og == '.gif' || $ext_og == '.jpg' || $ext_og == '.png') {
       $og_newFile = $item_name. '_'. date('Y_md_His'). $ext_og; //EX）er_2013_1225_0945.jpg
-      $og_filePath = '../images/og_images/'. $og_newFile;
+      $og_filePath = '../images/gallery/og_images/'. $og_newFile;
       move_uploaded_file($og['tmp_name'], $og_filePath);
     }else{
       echo '＊拡張子が[.gif] [.jpg] [.png] のファイルのみアップロード可能';
     }
 
     if ($ext_thm == '.gif' || $ext_thum == '.jpg' || $ext_thum == '.png') {
-      $thum_newFile = $item_name. '_'. date('Y_md_His'). $ext_thum;
-      $thum_filePath = '../images/thum_images/'. $thum_newFile;
+      $thum_newFile = $item_name. '_'.'thum'. '_'. date('Y_md_His'). $ext_thum; //EX) er_thum_2013_1225_1410.jpg
+      $thum_filePath = '../images/gallery/thum_images/'. $thum_newFile;
       move_uploaded_file($thum['tmp_name'], $thum_filePath);
     }else{
       echo '＊拡張子が[.gif] [.jpg] [.png] のファイルのみアップロード可能';

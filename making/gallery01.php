@@ -63,8 +63,8 @@
             $thum_img = htmlspecialchars($up['thum_img'], ENT_QUOTES, 'UTF-8');
         ?>
               <p <?= ($i%5 == 0)? 'class="grid01"' : '' ; ?>>
-              <a class="fancybox" href="../images/gallery/<?= $og_img ?>" data-fancybox-group="gallery" title="<?= $caption ?>">
-              <img src="../images/gallery/<?= $thum_img ?>" height="200" width="200" alt="image" /></a></p>
+              <a class="fancybox" href="../images/gallery/og_images/<?= $og_img ?>" data-fancybox-group="gallery" title="<?= $caption ?>">
+              <img src="../images/gallery/thum_images/<?= $thum_img ?>" height="200" width="200" alt="image" /></a></p>
         <?php
             $i++;
           }

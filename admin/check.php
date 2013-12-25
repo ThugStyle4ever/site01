@@ -7,9 +7,25 @@
     exit();
   }
 
+  $caption =  htmlspecialchars($_SESSION['gallery']['caption'],ENT_QUOTES, 'UTF-8');
+  $item_name = htmlspecialchars($_SESSION['gallery']['item_name'],ENT_QUOTES, 'UTF-8');
+  $og_img = $_SESSION['gallery']['og_img'];
+  $thum_img = $_SESSION['gallery']['thum_img'];
+
   //DB登録処理
   if (!empty($_POST)) {
-    $sql = sprintf('INSERT INTO gallery SET caption=');
+    $sql = sprintf('INSERT INTO gallery SET caption="%s", og_img="%s", thum_img="%s", remark="%s", upload_date="%s"',
+    mysql_real_escape_string($_SESSION['gallery']['caption']),
+    mysql_real_escape_string($_SESSION['gallery']['og_img']),
+    mysql_real_escape_string($_SESSION['gallery']['thum_img']),
+    mysql_real_escape_string($_SESSION['gallery']['remark']),
+    date('Y-m-d H:i:s')
+    );
+    mysql_query($sql) or die(mysql_error());
+    unset($_SESSION['gallery']);
+
+    header('Location: confirm.php');
+    exit();
   }
 
 ?>
@@ -22,7 +38,6 @@
   <link rel="stylesheet" type="text/css" href="../css/gridforms.css" />
   <script type="text/javascript" href="../js/gridforms.js"></script>
   <title>確認画面</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
   </head>
   <body>
 
@@ -53,13 +68,14 @@
   </div>
       <div id="upload">
         <form action="" method="post" class="grid-form">
+          <input type="hidden" name="action" value="submit" />
           <fieldset>
-            <br /><br />
+            <br />
             <fieldset>
               <div data-row-span="1">
                 <legend>Caption</legend>
                 <div data-field-span="1">
-                  <label><?= htmlspecialchars($_SESSION['gallery']['caption'],ENT_QUOTES, 'UTF-8'); ?>入力したキャプション</label>
+                  <label><?= $caption ?></label>
                 </div>
               </div>
             </fieldset>
@@ -68,14 +84,14 @@
               <div data-row-span="1">
                 <legend>Original File Name</legend>
                 <div data-field-span="1">
-                  <label><?= $_SESSION['gallery']['og_img'] ?>アップロードしたオリジナルファイル名</label>
+                  <label><?= $og_img ?></label>
                 </div>
               </div>
               <br />
               <div data-row-span="1">
                 <legend>Thumbnail File Name</legend>
                 <div data-field-span="1">
-                  <label><?= $_SESSION['gallery']['thum_img'] ?>アップロードしたサムネイルファイル名</label>
+                  <label><?= $thum_img ?></label>
                 </div>
               </div>
             </fieldset>
@@ -84,20 +100,23 @@
               <div data-row-span="1">
                 <legend>Uploaded OG Image</legend>
                 <div data-field-span="1">
-                  <label><img src="../images/og_images/<?= $_SESSION['gallery']['og_img'] ?>" />アップロードしたオリジナル画像を表示</label>
+                  <label><img src="../images/gallery/og_images/<?= $og_img ?>" /></label>
                 </div>
               </div>
               <br />
               <div data-row-span="1">
                 <legend>Uploaded Thumb Image</legend>
                 <div data-field-span="1">
-                  <label><img src="../images/thum_images/<?= $_SESSION['gallery']['thum_img'] ?>" />アップロードしたサムネイル画像を表示</label>
+                  <label><img src="../images/gallery/thum_images/<?= $thum_img ?>" /></label>
                 </div>
               </div>
             </fieldset>
+            <fieldset>
+              <br />
               <div data-field-span="1">
-                <input type="submit" value="DBに登録する" />
+                <input type="submit" value="Register for DataBase" size="100" />
               </div>
+            </fieldset>
           </fieldset>
         </form>
       </div>
