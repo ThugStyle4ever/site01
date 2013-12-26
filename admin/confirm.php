@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href="../css/style1.css" />
   <link rel="stylesheet" type="text/css" href="../css/gridforms.css" />
   <script type="text/javascript" href="../js/gridforms.js"></script>
-  <title>登録完了</title>
+  <title>登録・変更・削除完了</title>
   </head>
   <body>
 
@@ -54,7 +54,7 @@
         <fieldset>
           <br />
           <div data-field-span="1">
-            <a href="index.php" class="css_btn_class">Back</a>
+            <a href="db_table.php" class="css_btn_class">Back</a>
           </div>
           <br />
         </fieldset>

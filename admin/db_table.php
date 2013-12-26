@@ -1,8 +1,10 @@
 <?php
   require('dbconnect.php');
+  session_start();
   $recordSet = mysql_query('SELECT * FROM gallery ORDER BY id DESC ');
-
-
+  if(isset($_SESSION['gallery'])){
+    unset($_SESSION['gallery']);
+  }
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -12,7 +14,7 @@
   <link rel="stylesheet" type="text/css" href="../css/style1.css" />
   <link rel="stylesheet" type="text/css" href="../css/gridforms.css" />
   <script type="text/javascript" href="../js/gridforms.js"></script>
-  <title>登録変更</title>
+  <title>画像一覧</title>
   </head>
   <body>
 
@@ -67,7 +69,7 @@
         <td class="float"><a href="#"><img src="../images/gallery/thum_images/<?= $table['thum_img']; ?>" alt="" width="150" height="150" /></a><br /><?= $thum ?></td>
         <td nowrap><?= $up ?></td>
         <td><a href="./update.php?id=<?= $id ?>">Update</a>&nbsp;&nbsp;
-            <a href="./delete.php?id=<?= $id ?>">Delete</a></td>
+            <a href="./delete_done.php?id=<?= $id ?>" onclick="return confirm('Really??');">Delete</a></td>
       </tr>
     <?php
     }

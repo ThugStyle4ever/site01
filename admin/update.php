@@ -14,10 +14,16 @@
   $thum_img = htmlspecialchars($data['thum_img'], ENT_QUOTES);
 
   if(!empty($_POST)){
+    $id = htmlspecialchars($_POST['id'], ENT_QUOTES,'UTF-8');
     $cap = htmlspecialchars($_POST['caption'], ENT_QUOTES,'UTF-8');
     $item_name = htmlspecialchars($_POST['item_name'], ENT_QUOTES,'UTF-8');
+    $old_og_img = htmlspecialchars($_POST['old_og_img'], ENT_QUOTES);
+    $old_thum_img = htmlspecialchars($_POST['old_thum_img'], ENT_QUOTES);
+
+    $_SESSION['gallery'] = $_POST;
 
     if($_FILES['og_img']['name'] != '' && $_FILES['thum_img']['name'] != ''){
+      //exit(print_r($_FILES));
       $og = $_FILES['og_img'];
       $thum = $_FILES['thum_img'];
 
@@ -43,9 +49,8 @@
       $_SESSION['gallery']['thum_img'] = $thum_newFile;
 
     }
-    $_SESSION['gallery'] = $_POST;
-
-    header('Location: check.php');
+    // exit(print_r($_SESSION['gallery']));
+    header('Location: confirm_update.php');
     exit();
   }
 
@@ -99,6 +104,7 @@
                   <div data-field-span="1">
                     <label>Input New Caption</label>
                     <div>
+                    <input name="id" type="hidden" value="<?= $id ?>" />
                     <textarea name="caption" id="caption" cols="35" rows="3" autofocus　value="" ><?= $cap ?></textarea>
                     </div>
                   </div>
@@ -143,6 +149,7 @@
                   <div data-field-span="1">
                     <label>Please choose the Original Image to change.</label>
                     <input name="og_img" type="file" id="og_img" />
+                    <input name="old_og_img" type="hidden" value="<?= $og_img ?>" />
                   </div>
                 </div>
                 <div data-row-span="2">
@@ -152,6 +159,7 @@
                   <div data-field-span="1">
                     <label>Please choose the Thumbnail Image to change.</label>
                     <input name="thum_img" type="file" id="thum_img" />
+                    <input name="old_thum_img" type="hidden" value="<?= $thum_img ?>" />
                   </div>
                 </div>
                 </fieldset>
