@@ -81,69 +81,79 @@
     <div id="topNav" style="left:977px;" >
       <a href="../sitemap.html"><img src="../images/nav_06.gif" alt="sitemap" /></a>
     </div>
-        <div id="upload">
-          <form class="grid-form" action="" method="post" enctype="multipart/form-data">
+      <div id="upload">
+        <form class="grid-form" action="" method="post" enctype="multipart/form-data">
+          <fieldset>
+            <br />
             <fieldset>
-              <br /><br />
-              <fieldset>
-                <div data-row-span="1">
-                  <legend>Caption</legend>
-                  <div data-field-span="1">
-                    <label>Input Caption</label>
-                    <textarea name="caption" id="caption" cols="35" rows="3" autofocus ><?= $cap ?></textarea>
+              <div data-row-span="1">
+                <legend>Caption</legend>
+                <div data-field-span="1">
+                  <label>Input Caption</label>
+                  <div>
+                  <textarea name="caption" id="caption" cols="35" rows="3" autofocus ><?= $cap ?></textarea>
                   </div>
                 </div>
-              </fieldset>
-
-              <br /><br />
-
-              <fieldset>
-                <div data-row-span="1">
-                  <legend>Item Name</legend>
-                  <div data-field-span="1">
-                    <label>Select Type</label>
-                    <label for="mr"><input name="item_name" type="radio" id="mr" value="mr"<?= $_SESSION['value'] == 'mr'? 'checked="checked"' : '' ; ?> />Marriage</label>
-                    <label for="er"><input name="item_name" type="radio" id="er" value="er"<?= $_SESSION['value'] == 'er'? 'checked="checked"' : '' ; ?> />Engage</label>
-                    <label for="pr"><input name="item_name" type="radio" id="pr" value="pr"<?= $_SESSION['value'] == 'pr'? 'checked="checked"' : '' ; ?> />Pair</label>
-                    <label for="or"><input name="item_name" type="radio" id="or" value="or"<?= $_SESSION['value'] == 'or'? 'checked="checked"' : '' ; ?> />Order</label>
-                  </div>
-                </div>
-              </fieldset>
-
-              <br /><br />
-
-              <fieldset>
-                <div data-row-span="1">
-                  <legend>Select Image</legend>
-                  <div data-field-span="1">
-                    <label>Select Original Image</label>
-                    <input name="og_img" type="file" id="og_img" />
-                  </div>
-                </div>
-                <div data-row-span="2">
-                  <div data-field-span="1">
-                    <label>Select thumbnail Image</label>
-                    <input name="thum_img" type="file" id="thum_img" />
-                  </div>
-                </div>
-                <div data-row-span="2">
-                  <div data-field-span="1">
-                    <label>&nbsp;</label>
-                  </div>
-                  <div data-field-span="1">
-                    <input type="submit" value="UPLOAD" />
-                  </div>
-                </div>
-              </fieldset>
-              <fieldset>
-                <!-- <div data-row-span="1">
-                  <a href="index.php?action=rewrite">&laquo;&nbsp;Rewrite</a>
-                </div> -->
-              </fieldset>
+              </div>
             </fieldset>
-          </form>
-        </div>
-        <br />
+
+            <br />
+
+            <fieldset>
+              <div data-row-span="1">
+                <legend>Item Name</legend>
+                <div data-field-span="1">
+                  <label>Select Type</label>
+                  <div>
+                  <label for="mr"><input name="item_name" type="radio" id="mr" value="mr"<?= $_SESSION['value'] == 'mr'? 'checked="checked"' : '' ; ?> />Marriage</label>
+                  </div>
+                  <div>
+                  <label for="er"><input name="item_name" type="radio" id="er" value="er"<?= $_SESSION['value'] == 'er'? 'checked="checked"' : '' ; ?> />Engage</label>
+                  </div>
+                  <div>
+                  <label for="pr"><input name="item_name" type="radio" id="pr" value="pr"<?= $_SESSION['value'] == 'pr'? 'checked="checked"' : '' ; ?> />Pair</label>
+                  </div>
+                  <div>
+                  <label for="or"><input name="item_name" type="radio" id="or" value="or"<?= $_SESSION['value'] == 'or'? 'checked="checked"' : '' ; ?> />Order</label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <br />
+
+            <fieldset>
+              <div data-row-span="1">
+                <legend>Select Image</legend>
+                <div data-field-span="1">
+                  <label>Select Original Image</label>
+                  <input name="og_img" type="file" id="og_img" />
+                </div>
+              </div>
+              <div data-row-span="2">
+                <div data-field-span="1">
+                  <label>Select thumbnail Image</label>
+                  <input name="thum_img" type="file" id="thum_img" />
+                </div>
+              </div>
+              <div data-row-span="2">
+                <div data-field-span="1">
+                  <label>&nbsp;</label>
+                </div>
+                <div data-field-span="1">
+                  <input type="submit" value="UPLOAD" />
+                </div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <!-- <div data-row-span="1">
+                <a href="index.php?action=rewrite">&laquo;&nbsp;Rewrite</a>
+              </div> -->
+            </fieldset>
+          </fieldset>
+        </form>
+      </div>
+      <br />
     </div>
   </body>
 </html>

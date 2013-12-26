@@ -1,48 +1,55 @@
 <?php
   require('dbconnect.php');
   session_start();
-  error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+  error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED); //php.iniによるディスプレイエラーを非表示にする
+
+  $id = $_GET['id'];
+  $sql = sprintf('SELECT * FROM gallery WHERE id=%d', mysql_real_escape_string($id));
+  $recordSet = mysql_query($sql);
+  $data = mysql_fetch_assoc($recordSet);
+
+  $cap = htmlspecialchars($data['caption'], ENT_QUOTES);
+  $item_name = htmlspecialchars($data['item_name'], ENT_QUOTES);
+  $og_img = htmlspecialchars($data['og_img'], ENT_QUOTES);
+  $thum_img = htmlspecialchars($data['thum_img'], ENT_QUOTES);
 
   if(!empty($_POST)){
     $cap = htmlspecialchars($_POST['caption'], ENT_QUOTES,'UTF-8');
     $item_name = htmlspecialchars($_POST['item_name'], ENT_QUOTES,'UTF-8');
-    $og = $_FILES['og_img'];
-    $thum = $_FILES['thum_img'];
 
-    $ext_og = substr($og['name'],-4);
-    $ext_thum = substr($thum['name'],-4);
+    if($_FILES['og_img']['name'] != '' && $_FILES['thum_img']['name'] != ''){
+      $og = $_FILES['og_img'];
+      $thum = $_FILES['thum_img'];
 
-    if ($ext_og == '.gif' || $ext_og == '.jpg' || $ext_og == '.png') {
-      $og_newFile = $item_name. '_'. date('Y_md_His'). $ext_og; //EX）er_2013_1225_0945.jpg
-      $og_filePath = '../images/gallery/og_images/'. $og_newFile;
-      move_uploaded_file($og['tmp_name'], $og_filePath);
-    }else{
-      echo '＊拡張子が[.gif] [.jpg] [.png] のファイルのみアップロード可能';
+      $ext_og = substr($og['name'],-4);
+      $ext_thum = substr($thum['name'],-4);
+
+      if ($ext_og == '.gif' || $ext_og == '.jpg' || $ext_og == '.png') {
+        $og_newFile = $item_name. '_'. date('Y_md_His'). $ext_og; //EX）er_2013_1225_0945.jpg
+        $og_filePath = '../images/gallery/og_images/'. $og_newFile;
+        move_uploaded_file($og['tmp_name'], $og_filePath);
+      }else{
+        echo '＊拡張子が[.gif] [.jpg] [.png] のファイルのみアップロード可能';
+      }
+
+      if ($ext_thm == '.gif' || $ext_thum == '.jpg' || $ext_thum == '.png') {
+        $thum_newFile = $item_name. '_'.'thumb'. '_'. date('Y_md_His'). $ext_thum; //EX) er_thum_2013_1225_1410.jpg
+        $thum_filePath = '../images/gallery/thum_images/'. $thum_newFile;
+        move_uploaded_file($thum['tmp_name'], $thum_filePath);
+      }else{
+        echo '＊拡張子が[.gif] [.jpg] [.png] のファイルのみアップロード可能';
+      }
+      $_SESSION['gallery']['og_img'] = $og_newFile;
+      $_SESSION['gallery']['thum_img'] = $thum_newFile;
+
     }
-
-    if ($ext_thm == '.gif' || $ext_thum == '.jpg' || $ext_thum == '.png') {
-      $thum_newFile = $item_name. '_'.'thumb'. '_'. date('Y_md_His'). $ext_thum; //EX) er_thum_2013_1225_1410.jpg
-      $thum_filePath = '../images/gallery/thum_images/'. $thum_newFile;
-      move_uploaded_file($thum['tmp_name'], $thum_filePath);
-    }else{
-      echo '＊拡張子が[.gif] [.jpg] [.png] のファイルのみアップロード可能';
-    }
-
     $_SESSION['gallery'] = $_POST;
-    $_SESSION['gallery']['og_img'] = $og_newFile;
-    $_SESSION['gallery']['thum_img'] = $thum_newFile;
+
     header('Location: check.php');
     exit();
   }
-// exit('bbbbb35');
-  /*
 
-  //書き直し
-  // if ($_GET['action'] == 'rewrite') {
-  //   $_POST = $_SESSION['gallery'];
-  //   $error['rewrite'] = true;
 
-*/
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -82,63 +89,83 @@
       <a href="../sitemap.html"><img src="../images/nav_06.gif" alt="sitemap" /></a>
     </div>
         <div id="upload">
-          <form class="grid-form" action="" method="post" enctype="multipart/form-data">
-            <fieldset>
-              <br /><br />
+          <form class="grid-form" action="update.php" method="post" enctype="multipart/form-data">
+
+            <fieldset id="margin">
+              <br />
               <fieldset>
                 <div data-row-span="1">
                   <legend>Caption</legend>
                   <div data-field-span="1">
                     <label>Input New Caption</label>
-                    <textarea name="caption" id="caption" cols="35" rows="3" autofocus ><?= $cap ?></textarea>
+                    <div>
+                    <textarea name="caption" id="caption" cols="35" rows="3" autofocus　value="" ><?= $cap ?></textarea>
+                    </div>
                   </div>
                 </div>
               </fieldset>
 
-              <br /><br />
+              <br />
 
               <fieldset>
-                <div data-row-span="1">
-                  <legend>Item Name</legend>
-                  <div data-field-span="1">
-                    <label>Select Type</label>
-                    <label for="mr"><input name="item_name" type="radio" id="mr" value="mr"<?= $_SESSION['value'] == 'mr'? 'checked="checked"' : '' ; ?> />Marriage</label>
-                    <label for="er"><input name="item_name" type="radio" id="er" value="er"<?= $_SESSION['value'] == 'er'? 'checked="checked"' : '' ; ?> />Engage</label>
-                    <label for="pr"><input name="item_name" type="radio" id="pr" value="pr"<?= $_SESSION['value'] == 'pr'? 'checked="checked"' : '' ; ?> />Pair</label>
-                    <label for="or"><input name="item_name" type="radio" id="or" value="or"<?= $_SESSION['value'] == 'or'? 'checked="checked"' : '' ; ?> />Order</label>
+              <div data-row-span="1">
+                <legend>Item Name</legend>
+                <div data-field-span="1">
+                  <label>Select Type</label>
+                  <div>
+                  <label for="mr">
+                    <input name="item_name" type="radio" id="mr" value="mr"<?= $item_name == 'mr'? 'checked="checked"' : '' ; ?> />Marriage</label>
+                  </div>
+                  <div>
+                  <label for="er">
+                    <input name="item_name" type="radio" id="er" value="er"<?= $item_name == 'er'? 'checked="checked"' : '' ; ?> />Engage</label>
+                  </div>
+                  <div>
+                  <label for="pr">
+                    <input name="item_name" type="radio" id="pr" value="pr"<?= $item_name == 'pr'? 'checked="checked"' : '' ; ?> />Pair</label>
+                  </div>
+                  <div>
+                  <label for="or">
+                    <input name="item_name" type="radio" id="or" value="or"<?= $item_name == 'or'? 'checked="checked"' : '' ; ?> />Order</label>
                   </div>
                 </div>
-              </fieldset>
+              </div>
+            </fieldset>
 
-              <br /><br />
+              <br />
 
               <fieldset>
-                <div data-row-span="1">
+                <div data-row-span="2">
                   <legend>Select Image</legend>
                   <div data-field-span="1">
-                    <label>Select Original Image</label>
+                    <img src="../images/gallery/og_images/<?= $og_img ?>" alt="" width="100" height="70" />
+                  </div>
+                  <div data-field-span="1">
+                    <label>Please choose the Original Image to change.</label>
                     <input name="og_img" type="file" id="og_img" />
                   </div>
                 </div>
                 <div data-row-span="2">
                   <div data-field-span="1">
-                    <label>Select thumbnail Image</label>
+                    <img src="../images/gallery/thum_images/<?= $thum_img ?>" alt="" width="100" height="70" />
+                  </div>
+                  <div data-field-span="1">
+                    <label>Please choose the Thumbnail Image to change.</label>
                     <input name="thum_img" type="file" id="thum_img" />
                   </div>
                 </div>
+                </fieldset>
+
                 <div data-row-span="2">
                   <div data-field-span="1">
                     <label>&nbsp;</label>
                   </div>
                   <div data-field-span="1">
-                    <input type="submit" value="UPLOAD" />
+                    <input type="submit" value="UPDATE" />
                   </div>
                 </div>
               </fieldset>
               <fieldset>
-                <!-- <div data-row-span="1">
-                  <a href="index.php?action=rewrite">&laquo;&nbsp;Rewrite</a>
-                </div> -->
               </fieldset>
             </fieldset>
           </form>

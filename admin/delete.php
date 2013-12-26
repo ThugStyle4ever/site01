@@ -1,7 +1,4 @@
 <?php
-  require('dbconnect.php');
-  $recordSet = mysql_query('SELECT * FROM gallery ORDER BY id DESC ');
-
 
 ?>
 
@@ -12,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href="../css/style1.css" />
   <link rel="stylesheet" type="text/css" href="../css/gridforms.css" />
   <script type="text/javascript" href="../js/gridforms.js"></script>
-  <title>登録変更</title>
+  <title>削除完了</title>
   </head>
   <body>
 
@@ -41,38 +38,27 @@
   <div id="topNav" style="left:977px;" >
     <a href="../sitemap.html"><img src="../images/nav_06.gif" alt="sitemap" /></a>
   </div>
-  <div id="db_table">
-    <table>
-      <tr>
-        <th>ID</th>
-        <th>Caption</th>
-        <th>Original Image</th>
-        <th>thumbnail Image</th>
-        <th>Upload Date</th>
-        <th>Delete / Update</th>
-      </tr>
-    <?php
-      while ($table = mysql_fetch_assoc($recordSet)) {
-         $id = htmlspecialchars($table['id']);
-         $cap = htmlspecialchars($table['caption']);
-         $og = htmlspecialchars($table['og_img']);
-         $thum = htmlspecialchars($table['thum_img']);
-         $item_name = htmlspecialchars($table['item_name']);
-         $up = htmlspecialchars($table['upload_date']);
-    ?>
-      <tr>
-        <td><a href="<?= $id ?>" class="id"><?= $id ?></a></td>
-        <td nowrap><?= $cap ?></td>
-        <td class="float"><a href="#"><img src="../images/gallery/og_images/<?= $table['og_img']; ?>" alt="" width="150" height="150" /></a><br /><?= $og ?></td>
-        <td class="float"><a href="#"><img src="../images/gallery/thum_images/<?= $table['thum_img']; ?>" alt="" width="150" height="150" /></a><br /><?= $thum ?></td>
-        <td nowrap><?= $up ?></td>
-        <td><a href="./update.php?id=<?= $id ?>">Update</a>&nbsp;&nbsp;
-            <a href="./delete.php?id=<?= $id ?>">Delete</a></td>
-      </tr>
-    <?php
-    }
-    ?>
-    </table>
-  </div>
+  <div id="upload">
+    <form action="" method="post" class="grid-form">
+      <input type="hidden" name="action" value="submit" />
+      <fieldset>
+        <br />
+        <fieldset>
+          <div data-row-span="1">
+            <legend>Congratulations!</legend>
+            <div data-field-span="1">
+              <label>Deleted!! XD</label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <br />
+          <div data-field-span="1">
+            <a href="index.php" class="css_btn_class">Back</a>
+          </div>
+          <br />
+        </fieldset>
+      </fieldset>
+    </div>
   </body>
 </html>

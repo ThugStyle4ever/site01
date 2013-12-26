@@ -38,7 +38,7 @@
   <link rel="stylesheet" type="text/css" href="../css/style1.css" />
   <link rel="stylesheet" type="text/css" href="../css/gridforms.css" />
   <script type="text/javascript" href="../js/gridforms.js"></script>
-  <title>確認画面</title>
+  <title>確認画面:update</title>
   </head>
   <body>
 
