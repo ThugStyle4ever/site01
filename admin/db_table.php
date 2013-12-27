@@ -13,7 +13,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" type="text/css" href="../css/style1.css" />
   <link rel="stylesheet" type="text/css" href="../css/gridforms.css" />
-  <script type="text/javascript" href="../js/gridforms.js"></script>
+  <!-- // <script type="text/javascript" href="../js/gridforms.js"></script> -->
   <title>画像一覧</title>
   </head>
   <body>
@@ -51,30 +51,35 @@
         <th>Original Image</th>
         <th>thumbnail Image</th>
         <th>Upload Date</th>
-        <th>Delete / Update</th>
+        <th>Update / Delete</th>
       </tr>
     <?php
       while ($table = mysql_fetch_assoc($recordSet)) {
          $id = htmlspecialchars($table['id']);
-         $cap = htmlspecialchars($table['caption']);
+         $cap = $table['caption'];
          $og = htmlspecialchars($table['og_img']);
          $thum = htmlspecialchars($table['thum_img']);
          $item_name = htmlspecialchars($table['item_name']);
          $up = htmlspecialchars($table['upload_date']);
     ?>
       <tr>
-        <td><a href="<?= $id ?>" class="id"><?= $id ?></a></td>
+        <td id="<?= $id ?>"><a href="<?= $id ?>" class="id"><?= $id ?></a></td>
         <td nowrap><?= $cap ?></td>
-        <td class="float"><a href="#"><img src="../images/gallery/og_images/<?= $table['og_img']; ?>" alt="" width="150" height="150" /></a><br /><?= $og ?></td>
-        <td class="float"><a href="#"><img src="../images/gallery/thum_images/<?= $table['thum_img']; ?>" alt="" width="150" height="150" /></a><br /><?= $thum ?></td>
+        <td class="float"><a href="../images/gallery/og_images/<?= $table['og_img']; ?>"><img src="../images/gallery/og_images/<?= $table['og_img']; ?>" alt="" width="150" height="150" /></a><br /><?= $og ?></td>
+        <td class="float"><a href="../images/gallery/thum_images/<?= $table['thum_img']; ?>"><img src="../images/gallery/thum_images/<?= $table['thum_img']; ?>" alt="" width="150" height="150" /></a><br /><?= $thum ?></td>
         <td nowrap><?= $up ?></td>
-        <td><a href="./update.php?id=<?= $id ?>">Update</a>&nbsp;&nbsp;
-            <a href="./delete_done.php?id=<?= $id ?>" onclick="return confirm('Really??');">Delete</a></td>
+        <td nowrap>
+          <a href="./update.php?id=<?= $id ?>" class="css_btn_class">Update</a>&nbsp;&nbsp;
+          <a href="./delete.php?id=<?= $id ?>" class="css_btn_class" onclick="return confirm('Really??');">Delete</a>
+          <p id="scroll"><a href="#" class="css_btn_class">Scroll to top</a></p>
+          <p id="scroll"><a href="#btn" class="css_btn_class">Scroll to btm</a></p>
+        </td>
       </tr>
     <?php
     }
     ?>
     </table>
+    <p id="btn">&nbsp;</p>
   </div>
   </body>
 </html>

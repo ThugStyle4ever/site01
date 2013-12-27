@@ -58,7 +58,9 @@
         <?php
           $i=0;
           while($up = mysql_fetch_assoc($upload)){
-            $caption = htmlspecialchars($up['caption'], ENT_QUOTES, 'UTF-8');
+            $caption = str_replace( "<br />", "", $up['caption']);
+            // $caption = $up['caption'];
+            // $caption = htmlspecialchars($up['caption'], ENT_QUOTES, 'UTF-8');
             $og_img = htmlspecialchars($up['og_img'], ENT_QUOTES, 'UTF-8');
             $thum_img = htmlspecialchars($up['thum_img'], ENT_QUOTES, 'UTF-8');
         ?>
@@ -73,7 +75,7 @@
       </div>
 
     <div>
-      <p id="gallery"><a href="#">ページトップへ</a></p>
+      <p id="gallery"><a href="#" class="css_btn_class">Scroll to top</a></p>
     </div>
     <div>
         <p id="gfooter">Copyright&nbsp;&copy;&nbsp;2013&nbsp;*s&amp;s+design*&nbsp;All&nbsp;Rights&nbsp;Reserved.<br />

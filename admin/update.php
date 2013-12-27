@@ -7,8 +7,8 @@
   $sql = sprintf('SELECT * FROM gallery WHERE id=%d', mysql_real_escape_string($id));
   $recordSet = mysql_query($sql);
   $data = mysql_fetch_assoc($recordSet);
-
-  $cap = htmlspecialchars($data['caption'], ENT_QUOTES);
+  $cap = str_replace("<br />", "\n", $data['caption']);
+  $cap = htmlspecialchars($cap, ENT_QUOTES);
   $item_name = htmlspecialchars($data['item_name'], ENT_QUOTES);
   $og_img = htmlspecialchars($data['og_img'], ENT_QUOTES);
   $thum_img = htmlspecialchars($data['thum_img'], ENT_QUOTES);

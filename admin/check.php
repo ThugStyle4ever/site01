@@ -15,7 +15,7 @@
   //DB登録処理
   if (!empty($_POST)) {
     $sql = sprintf('INSERT INTO gallery SET caption="%s", og_img="%s", thum_img="%s" ,item_name="%s", remark="%s", upload_date="%s"',
-    mysql_real_escape_string($_SESSION['gallery']['caption']),
+    mysql_real_escape_string(str_replace("\n", "<br />",$_SESSION['gallery']['caption'])),
     mysql_real_escape_string($_SESSION['gallery']['og_img']),
     mysql_real_escape_string($_SESSION['gallery']['thum_img']),
     mysql_real_escape_string($_SESSION['gallery']['item_name']),

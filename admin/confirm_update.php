@@ -21,7 +21,7 @@
   if (!empty($_POST)) {
     if(isset($_SESSION['gallery']['og_img']) && isset($_SESSION['gallery']['thum_img'])){
       $sql = sprintf('UPDATE gallery SET caption="%s", og_img="%s", thum_img="%s" ,item_name="%s", remark="%s" WHERE id=%d',
-      mysql_real_escape_string($_SESSION['gallery']['caption']),
+      mysql_real_escape_string(str_replace("\n", "<br />",$_SESSION['gallery']['caption'])),
       mysql_real_escape_string($_SESSION['gallery']['og_img']),
       mysql_real_escape_string($_SESSION['gallery']['thum_img']),
       mysql_real_escape_string($_SESSION['gallery']['item_name']),
@@ -30,7 +30,7 @@
       );
     }else{
       $sql = sprintf('UPDATE gallery SET caption="%s",item_name="%s", remark="%s" WHERE id=%d',
-      mysql_real_escape_string($_SESSION['gallery']['caption']),
+      mysql_real_escape_string(str_replace("\n", "<br />",$_SESSION['gallery']['caption'])),
       mysql_real_escape_string($_SESSION['gallery']['item_name']),
       mysql_real_escape_string($_SESSION['gallery']['remark']),
       mysql_real_escape_string($_SESSION['gallery']['id'])
